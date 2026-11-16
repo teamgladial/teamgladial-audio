@@ -1,0 +1,27 @@
+---
+const releases = [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Audio releases, sound experiments, and listening notes from Gladial." />
+    <meta name="theme-color" content="#f5efe6" />
+    <title>Audio — Gladial</title>
+  </head>
+  <body>
+    <main>
+      <header><a class="brand" href="https://gladial.com">GLADIAL <span>/ AUDIO</span></a><a class="back" href="https://gladial.com">← All of Gladial</a></header>
+      <section class="hero"><p class="eyebrow">FIELD NOTES IN SOUND · EST. IN CURIOSITY</p><h1>Listen a little<br /><em>closer.</em></h1><p class="intro">A place for sounds worth making: releases, sketches, listening experiments, and notes from the edges of music and technology.</p><a class="listen" href="#listening">Explore the listening room <span>↓</span></a></section>
+      <section id="listening" class="listening"><div class="section-head"><h2>The listening room</h2><span>RELEASES &amp; EXPERIMENTS</span></div>
+        {releases.length ? <div class="releases">{releases.map((release) => <article><h3>{release.title}</h3><p>{release.description}</p>{release.audio && <audio controls src={release.audio}>Your browser does not support audio playback.</audio>}</article>)}</div> : <div class="quiet"><div class="record"><span></span></div><div><h3>Nothing playing just yet.</h3><p>New releases and audio experiments will appear here when they’re ready. Until then, stay tuned.</p></div></div>}
+      </section>
+      <footer><span>Made to be heard. Published independently.</span><a href="https://gladial.com">GLADIAL ↗</a></footer>
+    </main>
+  </body>
+</html>
+<style>
+  :global(*){box-sizing:border-box}:global(html){scroll-behavior:smooth}:global(body){margin:0;background:#f5efe6;color:#25241f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(900px,calc(100% - 48px));margin:auto}a{color:inherit;text-decoration:none}header{height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2d9cc}.brand{font-size:11px;font-weight:800;letter-spacing:.15em}.brand span{color:#a09381;font-weight:500}.back{color:#746d63;font-size:13px}.hero{padding:clamp(88px,14vw,150px) 0 105px}.eyebrow,.section-head>span{color:#928777;font-size:10px;font-weight:700;letter-spacing:.16em}.hero h1{margin:26px 0 24px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(58px,10vw,100px);font-weight:400;line-height:.94;letter-spacing:-.06em}.hero h1 em{color:#b36c49;font-weight:400}.intro{max-width:550px;color:#716b61;font-size:17px;line-height:1.75}.listen{display:inline-flex;gap:26px;align-items:center;margin-top:24px;padding:13px 16px;border:1px solid #d8cbbb;border-radius:3px;font-size:13px}.listen span{color:#b36c49}.section-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:17px;border-bottom:1px solid #e2d9cc}.section-head h2{margin:0;font-family:Georgia,serif;font-size:24px;font-weight:400}.quiet{display:flex;align-items:center;gap:24px;padding:48px 0 74px}.record{width:76px;height:76px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;background:repeating-radial-gradient(circle,#302d29 0 1px,#25231f 2px 4px);box-shadow:0 5px 16px #25241f22}.record span{width:16px;height:16px;border-radius:50%;background:#b36c49}.quiet h3{margin:0 0 8px;font-family:Georgia,serif;font-size:24px;font-weight:400}.quiet p{max-width:430px;margin:0;color:#787165;line-height:1.7}footer{display:flex;justify-content:space-between;padding:21px 0 30px;border-top:1px solid #e2d9cc;color:#81796c;font-size:12px}footer a{font-weight:700;letter-spacing:.12em}@media(max-width:560px){.section-head{align-items:flex-start;gap:12px;flex-direction:column}.quiet{align-items:flex-start}.record{width:56px;height:56px}}
+</style>
