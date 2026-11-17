@@ -1,6 +1,6 @@
-# Gladial Audio
+# Gladial Music
 
-A static Astro home for audio projects under the Gladial umbrella: releases, experiments, tools, and listening notes. Add release data and audio assets as they become available.
+A creative home for music under the Gladial umbrella: releases, sketches, listening experiments, and notes from the process. The repository remains `teamgladial-audio`.
 
 ## Local development
 

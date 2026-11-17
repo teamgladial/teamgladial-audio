@@ -7,16 +7,16 @@ const releases = [];
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="description" content="Audio releases, sound experiments, and listening notes from Gladial." />
+    <meta name="description" content="Music releases, sketches, and listening notes from Gladial." />
     <meta name="theme-color" content="#f5efe6" />
-    <title>Audio | Gladial</title>
+    <title>Music | Gladial</title>
   </head>
   <body>
     <main>
-      <header><a class="brand" href="https://gladial.com">GLADIAL <span>/ AUDIO</span></a><a class="back" href="https://gladial.com">← All of Gladial</a></header>
-      <section class="hero"><p class="eyebrow">FIELD NOTES IN SOUND · EST. IN CURIOSITY</p><h1>Listen a little<br /><em>closer.</em></h1><p class="intro">A place for sounds worth making: releases, sketches, listening experiments, and notes from the edges of music and technology.</p><a class="listen" href="#listening">Explore the listening room <span>↓</span></a></section>
-      <section id="listening" class="listening"><div class="section-head"><h2>The listening room</h2><span>RELEASES &amp; EXPERIMENTS</span></div>
-        {releases.length ? <div class="releases">{releases.map((release) => <article><h3>{release.title}</h3><p>{release.description}</p>{release.audio && <audio controls src={release.audio}>Your browser does not support audio playback.</audio>}</article>)}</div> : <div class="quiet"><div class="record"><span></span></div><div><h3>Nothing playing just yet.</h3><p>New releases and audio experiments will appear here when they’re ready. Until then, stay tuned.</p></div></div>}
+      <header><a class="brand" href="https://gladial.com">GLADIAL <span>/ MUSIC</span></a><a class="back" href="https://gladial.com">← All of Gladial</a></header>
+      <section class="hero"><p class="eyebrow">FIELD NOTES IN SOUND · EST. IN CURIOSITY</p><h1>Listen a little<br /><em>closer.</em></h1><p class="intro">A creative space for original music: releases, sketches, listening experiments, and notes from the process.</p><a class="listen" href="#listening">Explore the listening room <span>↓</span></a></section>
+      <section id="listening" class="listening"><div class="section-head"><h2>The listening room</h2><span>MUSIC &amp; SKETCHES</span></div>
+        {releases.length ? <div class="releases">{releases.map((release) => <article><h3>{release.title}</h3><p>{release.description}</p>{release.audio && <audio controls src={release.audio}>Your browser does not support audio playback.</audio>}</article>)}</div> : <div class="quiet"><div class="record"><span></span></div><div><h3>Nothing playing just yet.</h3><p>New music and creative experiments will appear here when they are ready. Until then, stay tuned.</p></div></div>}
       </section>
       <footer><span>Made to be heard. Published independently.</span><a href="https://gladial.com">GLADIAL ↗</a></footer>
     </main>
