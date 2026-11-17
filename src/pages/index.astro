@@ -1,5 +1,6 @@
 ---
-const releases = [];
+const releaseFiles = import.meta.glob('../content/releases/*.md', { eager: true });
+const releases = Object.values(releaseFiles).map((entry) => (entry as any).frontmatter).filter((release) => !release.draft).sort((a, b) => String(b.date).localeCompare(String(a.date)));
 ---
 <!doctype html>
 <html lang="en">
@@ -18,7 +19,7 @@ const releases = [];
       <header><a class="brand" href="https://gladial.com"><img src="/gladial-mark.png" alt="Gladial logo" /> GLADIAL <span>/ MUSIC</span></a><a class="back" href="https://gladial.com">← All of Gladial</a><button class="theme-toggle" data-theme-toggle aria-label="Switch color mode">☾</button></header>
       <section class="hero"><p class="eyebrow">FIELD NOTES IN SOUND · EST. IN CURIOSITY</p><h1>Listen a little<br /><em>closer.</em></h1><p class="intro">A creative space for original music: releases, sketches, listening experiments, and notes from the process.</p><a class="listen" href="#listening">Explore the listening room <span>↓</span></a></section>
       <section id="listening" class="listening"><div class="section-head"><h2>The listening room</h2><span>MUSIC &amp; SKETCHES</span></div>
-        {releases.length ? <div class="releases">{releases.map((release) => <article><h3>{release.title}</h3><p>{release.description}</p>{release.audio && <audio controls src={release.audio}>Your browser does not support audio playback.</audio>}</article>)}</div> : <div class="quiet"><div class="record"><span></span></div><div><h3>Nothing playing just yet.</h3><p>New music and creative experiments will appear here when they are ready. Until then, stay tuned.</p></div></div>}
+        {releases.length ? <div class="releases">{releases.map((release) => <article class="release">{release.coverImage && <img src={release.coverImage} alt={release.imageAlt || ''} loading="lazy" />}<div><p class="release-meta">{release.category}{release.date && ` · ${release.date}`}</p><h3>{release.title}</h3><p>{release.description}</p>{release.audio && <audio controls src={release.audio}>Your browser does not support audio playback.</audio>}{release.url && <a href={release.url}>Listen elsewhere ↗</a>}</div></article>)}</div> : <div class="quiet"><div class="record"><span></span></div><div><h3>Nothing playing just yet.</h3><p>New music and creative experiments will appear here when they are ready. Until then, stay tuned.</p></div></div>}
       </section>
       <footer><span>Made to be heard. Published independently.</span><a href="https://gladial.com">GLADIAL ↗</a></footer>
     </main>
@@ -30,4 +31,12 @@ const releases = [];
 <style>
   .brand { display: flex; align-items: center; gap: 10px; }
   .brand img { width: 38px; height: 38px; padding: 3px; object-fit: contain; border-radius: 50%; background: #fff; }
+  .release { display: grid; grid-template-columns: minmax(150px, 240px) 1fr; gap: 26px; padding: 30px 0; border-bottom: 1px solid #e2d9cc; }
+  .release > img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+  .release h3 { margin: 8px 0; font: 400 26px Georgia, serif; }
+  .release p { color: #716b61; line-height: 1.7; }
+  .release-meta { color: #928777 !important; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .release audio { display: block; width: min(100%, 460px); margin: 18px 0; }
+  .release a { display: inline-block; margin-top: 8px; font-size: 13px; }
+  @media(max-width:600px) { .release { grid-template-columns: 1fr; }.release > img { max-width: 320px; } }
 </style>
